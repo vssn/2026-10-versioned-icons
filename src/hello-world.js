@@ -1,8 +1,13 @@
 import { LitElement, css, html } from 'lit';
-import '@lion/ui/define/lion-icon.js';
+import { ScopedElementsMixin } from '@open-wc/scoped-elements/lit-element.js';
+import { LionIcon } from '@lion/ui/icon.js';
 import heartIcon from './icons/heart.svg.js';
 
-export class HelloWorld extends LitElement {
+export class HelloWorld extends ScopedElementsMixin(LitElement) {
+  static scopedElements = {
+    'lion-icon': LionIcon,
+  };
+
   static styles = css`
     :host {
       display: block;
