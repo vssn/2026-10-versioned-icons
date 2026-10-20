@@ -4,12 +4,13 @@ Hello-World-App, die zwei Versionen der
 [Lion Icon Web-Komponente](https://github.com/ing-bank/lion/tree/master/packages/ui/components/icon)
 parallel auf einer Seite nutzt:
 
-| Komponente       | Paket                                     | Icon   |
-| ---------------- | ----------------------------------------- | ------ |
-| `<hello-world>`  | `@lion/ui@0.25.x`                         | Herz   |
-| `<hello-legacy>` | `@lion/ui@0.14.3` (Alias `@lion/ui-legacy`) | Hammer |
+| Komponente                | Paket                                       | Scoping                            | Icon   |
+| ------------------------- | ------------------------------------------- | ---------------------------------- | ------ |
+| `<hello-world>`           | `@lion/ui@0.25.x`                           | `ScopedElementsMixin`              | Herz   |
+| `<hello-legacy>`          | `@lion/ui@0.14.3` (Alias `@lion/ui-legacy`) | `ScopedElementsMixin`              | Hammer |
+| `<hello-scoped-registry>` | `@lion/ui@0.25.x`                           | Standard-API `customElementRegistry` | Stern  |
 
-Die SVGs stammen aus den Lion-Tests (`src/icons/`).
+Herz und Hammer stammen aus den Lion-Tests, der Stern ist selbst gezeichnet (`src/icons/`).
 
 ## Start
 
@@ -35,8 +36,28 @@ class HelloLegacy extends ScopedElementsMixin(LitElement) {
 
 Global registriert sind nur `hello-world` und `hello-legacy`.
 
-Der Polyfill `@webcomponents/scoped-custom-element-registry` muss als Erstes
-geladen werden (siehe `src/main.js`).
+`<hello-scoped-registry>` ist ein schlichtes `HTMLElement` ohne Mixin und nutzt
+die [standardisierte API](https://developer.mozilla.org/en-US/docs/Web/API/Element/customElementRegistry):
+
+```js
+const registry = new CustomElementRegistry();
+registry.define('lion-icon', LionIcon);
+this.attachShadow({ mode: 'open', customElementRegistry: registry });
+```
+
+### Polyfill
+
+`src/polyfills.js` wird als Erstes geladen und enthält
+`@webcomponents/scoped-custom-element-registry`. Der Polyfill ersetzt immer auch
+eine native Implementierung. Das ist nötig, weil `@open-wc/scoped-elements`
+(3.0.10) mit Lit auf `shadowRoot.importNode` setzt. Das gibt es nur im
+Polyfill, nativ schlägt das Rendern fehl.
+
+Der Polyfill (0.0.10) kennt allerdings nur die älteren Optionsnamen `registry`
+bzw. `customElements`. `src/polyfills.js` bildet deshalb die Standard-Option
+`customElementRegistry` darauf ab. Ohne diese Abbildung würde
+`<hello-scoped-registry>` in die globale Registry rendern und das Icon nie
+upgraden.
 
 ### Hinweis: IconManager
 
