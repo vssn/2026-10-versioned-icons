@@ -1,4 +1,5 @@
-import { LionIcon } from '@lion/ui/icon.js';
+// @lion/ui@0.14.3, installed under an npm alias
+import { LionIcon } from '@lion/ui-legacy/icon.js';
 import starIcon from './icons/star.svg.js';
 
 // Standard Scoped Custom Element Registry API, no ScopedElementsMixin:

@@ -8,7 +8,7 @@ parallel auf einer Seite nutzt:
 | ------------------------- | ------------------------------------------- | ---------------------------------- | ------ |
 | `<hello-world>`           | `@lion/ui@0.25.x`                           | `ScopedElementsMixin`              | Herz   |
 | `<hello-legacy>`          | `@lion/ui@0.14.3` (Alias `@lion/ui-legacy`) | `ScopedElementsMixin`              | Hammer |
-| `<hello-scoped-registry>` | `@lion/ui@0.25.x`                           | Standard-API `customElementRegistry` | Stern  |
+| `<hello-scoped-registry>` | `@lion/ui@0.14.3` (Alias `@lion/ui-legacy`) | Standard-API `customElementRegistry` | Stern  |
 
 Herz und Hammer stammen aus den Lion-Tests, der Stern ist selbst gezeichnet (`src/icons/`).
 
