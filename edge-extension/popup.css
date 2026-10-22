@@ -1,0 +1,257 @@
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #1b1b1f;
+  --muted: #62626b;
+  --border: #dcdce2;
+  --surface: #f4f4f7;
+  --accent: #0f6cbd;
+  --chip: #e6f0fa;
+  --chip-fg: #0b4f8a;
+  --warn: #9a5b00;
+  --warn-bg: #fff4e0;
+  --error: #b42318;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1f1f23;
+    --fg: #ececf1;
+    --muted: #a0a0ab;
+    --border: #3a3a42;
+    --surface: #2a2a30;
+    --accent: #6cb8f6;
+    --chip: #1d3550;
+    --chip-fg: #b9dcfb;
+    --warn: #ffc76b;
+    --warn-bg: #3d2e12;
+    --error: #ff8a80;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 560px;
+  min-height: 200px;
+  margin: 0;
+  padding: 12px;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.4 system-ui, 'Segoe UI', sans-serif;
+}
+
+body.page {
+  width: auto;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+input[type='text'] {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+}
+
+input[type='text']:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.domain span {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0;
+  padding: 8px 0;
+  border-block: 1px solid var(--border);
+}
+
+.summary {
+  flex: 1;
+  margin: 0;
+  color: var(--muted);
+}
+
+button {
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+h2 {
+  margin: 14px 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hint {
+  padding: 16px;
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--muted);
+}
+
+details {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 6px;
+  background: var(--bg);
+}
+
+details[open] > summary {
+  border-bottom: 1px solid var(--border);
+}
+
+summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::before {
+  content: '▸';
+  color: var(--muted);
+}
+
+details[open] > summary::before {
+  content: '▾';
+}
+
+.asset-name {
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.chip {
+  padding: 1px 7px;
+  border-radius: 10px;
+  background: var(--chip);
+  color: var(--chip-fg);
+  font: 12px ui-monospace, 'Cascadia Mono', Consolas, monospace;
+}
+
+.badge-warn {
+  margin-left: auto;
+  padding: 1px 7px;
+  border-radius: 10px;
+  background: var(--warn-bg);
+  color: var(--warn);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.version {
+  padding: 6px 10px 8px 26px;
+}
+
+.version + .version {
+  border-top: 1px dashed var(--border);
+}
+
+.version-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.version-head .base {
+  color: var(--muted);
+  font-size: 12px;
+  word-break: break-all;
+}
+
+ul.files {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.files li {
+  display: flex;
+  gap: 8px;
+  padding: 1px 0;
+}
+
+ul.files a,
+ul.others a {
+  color: var(--accent);
+  text-decoration: none;
+  font: 12px ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  word-break: break-all;
+}
+
+ul.files a:hover,
+ul.others a:hover {
+  text-decoration: underline;
+}
+
+.meta {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.meta.error {
+  color: var(--error);
+}
+
+ul.others {
+  margin: 0;
+  padding: 6px 10px;
+  list-style: none;
+}
+
+ul.others li {
+  display: flex;
+  gap: 8px;
+  padding: 2px 0;
+}

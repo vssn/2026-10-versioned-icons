@@ -65,3 +65,11 @@ Beide Versionen teilen sich über `singleton-manager` denselben Schlüssel
 `@lion/ui::icons::0.x` für den `IconManager`. Hier spielt das keine Rolle,
 weil die SVGs direkt über `.svg` gesetzt werden. Für Icon-Resolver über
 `icon-id` müsste man das gezielt behandeln.
+
+## Edge-Extension: Versioned Asset Inspector
+
+[`edge-extension/`](edge-extension/) enthält eine Browser-Extension für Edge
+(und Chrome), die alle Ressourcen einer Domain auflistet und versionierte
+Pfade wie `cdn.example.com/feat-package/1.2.0/bundle.js` nach Asset-Name und
+Version gruppiert. So sieht man z. B. sofort, dass `@lion/ui` in zwei
+Versionen geladen wird. Details in der [README](edge-extension/README.md).

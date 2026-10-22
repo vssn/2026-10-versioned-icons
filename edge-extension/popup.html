@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Versioned Asset Inspector</title>
+    <link rel="stylesheet" href="popup.css" />
+    <script type="module" src="popup.js"></script>
+  </head>
+  <body>
+    <form id="settings" autocomplete="off">
+      <label class="domain">
+        <span>Domain</span>
+        <input id="domain" type="text" placeholder="cdn.example.com" spellcheck="false" />
+      </label>
+      <div class="options">
+        <label><input id="subdomains" type="checkbox" checked /> inkl. Subdomains</label>
+        <label><input type="radio" name="scope" value="tab" checked /> Aktueller Tab</label>
+        <label><input type="radio" name="scope" value="all" /> Alle Tabs</label>
+      </div>
+    </form>
+
+    <div class="toolbar">
+      <p id="summary" class="summary"></p>
+      <button id="reload" type="button" title="Tab neu laden und alle Requests erfassen">Tab neu laden</button>
+      <button id="copy" type="button" title="Ergebnis als JSON in die Zwischenablage">JSON</button>
+      <button id="clear" type="button" title="Aufzeichnung löschen">Leeren</button>
+    </div>
+
+    <main id="results"></main>
+  </body>
+</html>
